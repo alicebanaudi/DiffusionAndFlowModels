@@ -17,7 +17,7 @@
 </div>
 
 <div align=center>
-   <img src="./assets/ddpm_vis.gif">
+   <img src="ddpm_vis.gif">
 </div>
 
 
