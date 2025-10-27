@@ -1,34 +1,78 @@
-<div align=center>
-  <h1>
-  DDPM and DDIM
-  </h1>
-  <p>
-    <a href=https://mhsung.github.io/kaist-cs492d-fall-2025/ target="_blank"><b>KAIST CS492(C): Diffusion and Flow Models (Fall 2025)</b></a><br>
-    Programming Assignment 1
-  </p>
-</div> 
+# Diffusion & Flow Models — Programming Assignments
 
-<div align=center>
+<div align="center">
+  <h2>KAIST CS492(C): Diffusion and Flow Models (Fall 2025)</h2>
   <p>
-    Instructor: <a href=https://mhsung.github.io target="_blank"><b>Minhyuk Sung</b></a> (mhsung [at] kaist.ac.kr)<br>
-    TA: <a href=https://dvelopery0115.github.io target="_blank"><b>Yunhong Min</b></a>  (dbsghd363 [at] kaist.ac.kr)<br>
-    Credit: <a href=https://63days.github.io target="_blank"><b>Juil Koo</b></a>  (63days [at] kaist.ac.kr) & <a href=https://hieuristics.xyz/ target="_blank"><b>Nguyen Minh Hieu</b></a>  (hieu1052k3 [at] gmail.com)<br>
+    Instructor: <a href="https://mhsung.github.io" target="_blank"><b>Minhyuk Sung</b></a><br>
+    TA: <a href="https://dvelopery0115.github.io" target="_blank"><b>Yunhong Min</b></a><br>
+    Credit: <a href="https://63days.github.io" target="_blank"><b>Juil Koo</b></a> &amp;
+    <a href="https://hieuristics.xyz/" target="_blank"><b>Nguyen Minh Hieu</b></a>
   </p>
+  <img src="assets/ddpm_vis.gif" width="520" alt="DDPM visualization"/>
 </div>
 
-<div align=center>
-   <img src="ddpm_vis.gif">
-</div>
+---
+
+## Overview
+
+This repository contains the programming assignments for the course **Diffusion and Flow Models (CS492C)** at **KAIST**.  
+Each assignment introduces a new concept in generative modeling — from the basics of diffusion processes to more advanced numerical solvers — with hands-on implementation and visualization in Python and Google Colab.
+
+You will progressively build an intuition for how diffusion models generate data, how they can be improved for faster sampling, and how mathematical solvers are applied to real generative systems.
 
 
-## Abstract
-Denoising Diffusion Probabilistic Models (DDPM) are a generative modeling framework that learns to reverse a predefined diffusion process. By gradually corrupting data with Gaussian noise in the forward process and training a neural network to denoise step by step, DDPM is able to synthesize high-quality samples from pure noise. The objective in DDPM is to predict the injected noise at each timestep, and the reverse process is modeled as a stochastic Markov chain.
+## 🧩 Assignment 1 — DDPM & DDIM
 
-Denoising Diffusion Implicit Models (DDIM) build on the same noise-prediction model but introduce more generalized non-Markovian forward process. This modification provides an alternative trajectory for sample generation, often reducing the number of inference steps required while maintaining competitive sample quality. In this way, DDIM highlights the flexibility of diffusion models in trading off efficiency and fidelity.
+### Abstract
+The first project introduces **Diffusion Models**, one of the most powerful modern generative frameworks.  
+You will learn how to:
+- Add noise step-by-step to data (the *forward* process),
+- Train a neural network to remove this noise (the *reverse* process),
+- And finally, generate new samples starting from pure noise.
 
-In this first assignment, we will implement DDPM and DDIM step by step on a 2D toy dataset, compare their sampling behaviors, and gain practical experience with the core components of diffusion-based generative modeling.
+The project covers two versions:
+- **DDPM (Denoising Diffusion Probabilistic Model)** — the original stochastic sampling approach.  
+- **DDIM (Denoising Diffusion Implicit Model)** — a faster, deterministic variant that can produce similar results with fewer steps.
 
-## Setup
+Through this assignment, you’ll visualize how points in a 2D dataset evolve under noise, and how the trained model can reverse this process to create new data from randomness.
 
-Clone this repository and upload the notebook file `DDPM_DDIM.ipynb` to [Google Colab](https://colab.research.google.com).  
-**All instructions—including task descriptions and submission guidelines—are provided in the notebook file. Please follow them carefully to complete the tasks.**
+---
+
+## ⚙️ Assignment 2 — DPM-Solver
+
+### Abstract
+The second project focuses on improving the **efficiency** of diffusion sampling.  
+You will explore the idea behind **DPM-Solver**, a method that views the diffusion process as an ordinary differential equation (ODE).  
+Instead of relying on many small denoising steps, DPM-Solver computes a more direct path from noise to data using clever numerical approximations.
+
+In simple terms:
+- DDPM takes *many small steps* to generate one sample.  
+- DPM-Solver tries to reach the same result with *just a few larger steps*, by solving the underlying equations more accurately.
+
+You’ll experiment with **first-order** and **second-order** versions of the solver, compare their results, and see how increasing solver accuracy reduces the number of required sampling steps.
+
+---
+
+## 🧠 Learning Goals
+
+Across the assignments, you will:
+- Understand the connection between diffusion models and noise prediction.  
+- Visualize the sampling trajectory of stochastic vs. deterministic models.  
+- Implement numerical solvers that accelerate generation while keeping high sample quality.  
+- Build a strong conceptual foundation for modern generative AI techniques such as Stable Diffusion and Flow Matching models.
+
+---
+
+## 🚀 How to Run
+
+### Option 1 — Google Colab (recommended)
+1. Open the notebook file (e.g. `A1_DDPM_DDIM/DDPM_DDIM.ipynb`) in Google Colab.  
+2. Follow the setup cell at the top of the notebook.  
+3. Run all cells in sequence and complete the `TODO` parts.
+
+### Option 2 — Local environment
+1. Use Python ≥ 3.10  
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+3. Launch Jupyter and open the desired notebook.
